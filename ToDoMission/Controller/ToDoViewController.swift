@@ -50,14 +50,15 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         cellButton.setImage(unCheckMark, for: .normal)
         
         // カスタムセルのボタンをタップした時にcallするメソッドを設定
+        // * チェックボタンを切り替える
         cellButton.addTarget(self, action: #selector(checkButton(_:)), for: .touchUpInside)
 
+        // カスタムセルのボタンにrowをタグ値として設定
         cellButton.tag = indexPath.row
         isCheckList.insert(false, at: isCheckList.endIndex)
         
         return cell
     }
-    
 
     /** ミッション内容の追加 ボタンをタップ*/
     @IBAction func addMission(_ sender: Any) {
@@ -75,6 +76,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.missionList.insert(textField.text!, at: self.missionList.endIndex)
                 // ミッションテーブルの先頭に行を追加
                 self.missionTable.insertRows(at: [IndexPath(row: self.missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
+                
+                self.updateArchivementRate()
             }
         }
         
@@ -91,6 +94,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     // カスタムセル内のチェックボックスをタップ
     // チェックボックス画像を切り替える
     @objc func checkButton(_ sender:UIButton) {
+        print("")
         print("debug:checkButton(): ", sender.tag, "start")
         print("debug:checkButton(): isCheckList:", isCheckList[sender.tag])
         
@@ -103,8 +107,36 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         print("debug:checkButton(): isCheckList:", isCheckList[sender.tag])
         
-//TODO : rewardのパーセンテージ更新
+        updateArchivementRate()
         
         print("debug:checkButton(): ", sender.tag, "end")
+    }
+    
+    /* 達成率更新 */
+    func updateArchivementRate() {
+        var countTrue = 0
+        var result:Float = 0
+        
+        for data in isCheckList {
+            if data {
+                countTrue += 1
+            }
+        }
+        result = Float(countTrue) / Float(isCheckList.count) * 100
+        let result_str = String(format: "%.0f", result)
+        archivementRate.text = "\(result_str) %"
+//        print("debug:updateArchivementRate():countTrue",countTrue)
+//        print("debug:updateArchivementRate():isCheckList.count",isCheckList.count)
+        print("debug:updateArchivementRate():result:",result)
+        
+        if result.isEqual(to: 100) {
+            gohoubi()
+        }
+    }
+    
+    func gohoubi(){
+        print("やるやん！！！")
+        
+
     }
 }
