@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
+    
     @IBOutlet weak var missionTable: UITableView!
     @IBOutlet weak var archivementRate: UILabel!
     @IBOutlet weak var reward: UITextField!
@@ -28,6 +29,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        reward.delegate = self
+        
     }
     
     /* ミッション内容の数 */
@@ -138,5 +141,11 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("やるやん！！！")
         
 
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
 }

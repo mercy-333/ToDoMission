@@ -14,6 +14,7 @@
 		7654481E25202F3300E49483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7654481D25202F3300E49483 /* Assets.xcassets */; };
 		7654482125202F3300E49483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7654481F25202F3300E49483 /* LaunchScreen.storyboard */; };
 		7654482C2520D56100E49483 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654482B2520D56100E49483 /* ToDoViewController.swift */; };
+		7687504B2525FD3300FBB95F /* 851MkPOP_002.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7654482025202F3300E49483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7654482225202F3300E49483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7654482B2520D56100E49483 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 851MkPOP_002.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		7654482A2520D4D900E49483 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */,
 				7654481A25202F2700E49483 /* Main.storyboard */,
 				7654481D25202F3300E49483 /* Assets.xcassets */,
 				7654481F25202F3300E49483 /* LaunchScreen.storyboard */,
@@ -154,6 +157,7 @@
 			files = (
 				7654482125202F3300E49483 /* LaunchScreen.storyboard in Resources */,
 				7654481E25202F3300E49483 /* Assets.xcassets in Resources */,
+				7687504B2525FD3300FBB95F /* 851MkPOP_002.ttf in Resources */,
 				7654481C25202F2700E49483 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

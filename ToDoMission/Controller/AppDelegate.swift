@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UILabel.appearance().font = UIFont(name: "851MkPOP", size: 20)
+        UITextField.appearance().font = UIFont(name: "851MkPOP", size: 20)
+        
         return true
     }
 
