@@ -115,7 +115,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Jk9-nk-AD5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2d3-9P-8N0"/>
                             <constraint firstItem="Jk9-nk-AD5" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3gn-hd-5C4"/>
@@ -145,11 +145,12 @@
                         <outlet property="archivementRate" destination="HqI-pD-sla" id="GUp-YW-cgz"/>
                         <outlet property="missionTable" destination="RZY-zW-3TV" id="6Sk-bN-ph5"/>
                         <outlet property="reward" destination="Zu9-bE-5o8" id="9GV-K4-Yan"/>
+                        <outlet property="titleLabel" destination="6cr-vm-CoI" id="lyf-op-mL8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-804.34782608695662" y="879.91071428571422"/>
+            <point key="canvasLocation" x="-768.11594202898561" y="755.35714285714278"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Q5T-Tn-l1k">

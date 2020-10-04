@@ -14,7 +14,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var missionTable: UITableView!
     @IBOutlet weak var archivementRate: UILabel!
     @IBOutlet weak var reward: UITextField!
-
+    @IBOutlet weak var titleLabel: UILabel!
+    
     // 画像 (true:checked / false:unchecked)
     let checkMark = UIImage(named: "checkMark")
     let unCheckMark = UIImage(named: "unCheckMark")
