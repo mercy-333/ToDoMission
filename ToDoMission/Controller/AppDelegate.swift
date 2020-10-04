@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UILabel.appearance().font = UIFont(name: "851MkPOP", size: 20)
         UITextField.appearance().font = UIFont(name: "851MkPOP", size: 20)
+        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         return true
     }

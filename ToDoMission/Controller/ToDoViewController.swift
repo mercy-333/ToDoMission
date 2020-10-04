@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -15,6 +16,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var archivementRate: UILabel!
     @IBOutlet weak var reward: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bannerView: GADBannerView!
+    
     
     // 画像 (true:checked / false:unchecked)
     let checkMark = UIImage(named: "checkMark")
@@ -33,8 +36,11 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         reward.delegate = self
         titleLabel.font = UIFont(name: "851MkPOP", size: 30)
         self.view.addBackground(imageName:"stripe.png")
-        
-        
+        //本番
+        //bannerView.adUnitID = "ca-app-pub-2345881481621230/3925128565"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     /* ミッション内容の数 */
@@ -70,7 +76,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
 
-    /** ミッション内容の追加 ボタンをタップ*/
+    /** 追加 ボタンをタップ*/
     @IBAction func addMission(_ sender: Any) {
         
         // アラート画面設定
@@ -104,10 +110,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     // カスタムセル内のチェックボックスをタップ
     // チェックボックス画像を切り替える
     @objc func checkButton(_ sender:UIButton) {
-        print("")
-        print("debug:checkButton(): ", sender.tag, "start")
-        print("debug:checkButton(): isCheckList:", isCheckList[sender.tag])
-        
         if (isCheckList[sender.tag]) {
             sender.setImage(unCheckMark, for: .normal)
             (isCheckList[sender.tag]) = false
@@ -115,11 +117,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             sender.setImage(checkMark, for: .normal)
             (isCheckList[sender.tag]) = true
         }
-        print("debug:checkButton(): isCheckList:", isCheckList[sender.tag])
-        
         updateArchivementRate()
-        
-        print("debug:checkButton(): ", sender.tag, "end")
     }
     
     /* 達成率更新 */
@@ -135,9 +133,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         result = Float(countTrue) / Float(isCheckList.count) * 100
         let result_str = String(format: "%.0f", result)
         archivementRate.text = "\(result_str) %"
-//        print("debug:updateArchivementRate():countTrue",countTrue)
-//        print("debug:updateArchivementRate():isCheckList.count",isCheckList.count)
-        print("debug:updateArchivementRate():result:",result)
         
         if result.isEqual(to: 100) {
             gohoubi()
