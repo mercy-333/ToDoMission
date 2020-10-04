@@ -31,6 +31,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         reward.delegate = self
+        titleLabel.font = UIFont(name: "851MkPOP", size: 30)
+        self.view.addBackground(imageName:"stripe.png")
+        
         
     }
     
@@ -50,17 +53,20 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         cellLabel.text = missionList[indexPath.row]
         
         // カスタムセルのボタン(tag1)をunCkeckMarkに設定
-        let cellButton = cell.viewWithTag(1) as! UIButton
-        cellButton.setImage(unCheckMark, for: .normal)
+        if (cell.viewWithTag(1) as? UIButton) != nil {
+            let cellButton = cell.viewWithTag(1) as! UIButton
+            cellButton.setImage(unCheckMark, for: .normal)
         
-        // カスタムセルのボタンをタップした時にcallするメソッドを設定
-        // * チェックボタンを切り替える
-        cellButton.addTarget(self, action: #selector(checkButton(_:)), for: .touchUpInside)
+            // カスタムセルのボタンをタップした時にcallするメソッドを設定
+            // * チェックボタンを切り替える
+            cellButton.addTarget(self, action: #selector(checkButton(_:)), for: .touchUpInside)
 
-        // カスタムセルのボタンにrowをタグ値として設定
-        cellButton.tag = indexPath.row
-        isCheckList.insert(false, at: isCheckList.endIndex)
-        
+            // カスタムセルのボタンにrowをタグ値として設定
+            cellButton.tag = indexPath.row
+            isCheckList.insert(false, at: isCheckList.endIndex)
+        } else {
+            print("nill eror")
+        }
         return cell
     }
 
