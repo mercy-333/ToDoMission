@@ -140,7 +140,7 @@
                             <constraint firstItem="Dpy-gS-DTQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zkn-Ey-TKa"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ミッション" id="T1m-ha-KPO"/>
+                    <tabBarItem key="tabBarItem" title="ミッション" image="list.bullet" catalog="system" id="T1m-ha-KPO"/>
                     <connections>
                         <outlet property="archivementRate" destination="HqI-pD-sla" id="GUp-YW-cgz"/>
                         <outlet property="bannerView" destination="qn0-Pz-mbT" id="zz5-ZT-m3X"/>
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-768.11594202898561" y="755.35714285714278"/>
+            <point key="canvasLocation" x="-765" y="880"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Q5T-Tn-l1k">
@@ -182,7 +182,7 @@
                         <viewLayoutGuide key="safeArea" id="RNQ-zD-4Cl"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="合計" id="cYw-CG-QGg"/>
+                    <tabBarItem key="tabBarItem" title="合計" image="calendar" catalog="system" id="cYw-CG-QGg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MN4-Dn-ypY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,6 +190,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="plus" width="640" height="640"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
