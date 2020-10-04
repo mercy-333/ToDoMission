@@ -142,6 +142,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     func gohoubi(){
         print("やるやん！！！")
         
+        performSegue(withIdentifier: "PopUpSegue", sender: nil)
 
     }
     
@@ -149,5 +150,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         textField.resignFirstResponder()
         
         return true
+    }
+    @IBAction func segueTest(_ sender: Any) {
+        performSegue(withIdentifier: "PopUpSegue", sender: nil)
     }
 }

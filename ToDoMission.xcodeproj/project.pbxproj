@@ -16,6 +16,7 @@
 		7654482C2520D56100E49483 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654482B2520D56100E49483 /* ToDoViewController.swift */; };
 		7687504B2525FD3300FBB95F /* 851MkPOP_002.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */; };
 		7687504E2526985C00FBB95F /* addBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7687504D2526985B00FBB95F /* addBackground.swift */; };
+		76D488552529B444002B09F8 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D488542529B444002B09F8 /* PopUpViewController.swift */; };
 		B209CBB6D5E535D39F907500 /* Pods_ToDoMission.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 485977549DA2398A8A001B7B /* Pods_ToDoMission.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		7654482B2520D56100E49483 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 851MkPOP_002.ttf; sourceTree = "<group>"; };
 		7687504D2526985B00FBB95F /* addBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBackground.swift; sourceTree = "<group>"; };
+		76D488542529B444002B09F8 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		BA05032390E4FFC0EE4CE2C4 /* Pods-ToDoMission.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoMission.release.xcconfig"; path = "Target Support Files/Pods-ToDoMission/Pods-ToDoMission.release.xcconfig"; sourceTree = "<group>"; };
 		BC0161050B61D910CADF5496 /* Pods-ToDoMission.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoMission.debug.xcconfig"; path = "Target Support Files/Pods-ToDoMission/Pods-ToDoMission.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 				7654481625202F2700E49483 /* SceneDelegate.swift */,
 				7654481825202F2700E49483 /* ViewController.swift */,
 				7654482B2520D56100E49483 /* ToDoViewController.swift */,
+				76D488542529B444002B09F8 /* PopUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7654482C2520D56100E49483 /* ToDoViewController.swift in Sources */,
+				76D488552529B444002B09F8 /* PopUpViewController.swift in Sources */,
 				7687504E2526985C00FBB95F /* addBackground.swift in Sources */,
 				7654481925202F2700E49483 /* ViewController.swift in Sources */,
 				7654481525202F2700E49483 /* AppDelegate.swift in Sources */,
