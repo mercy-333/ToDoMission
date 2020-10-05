@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a8q-jc-Jda">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
@@ -129,13 +129,13 @@
                             <constraint firstItem="Dpy-gS-DTQ" firstAttribute="top" secondItem="6cr-vm-CoI" secondAttribute="bottom" constant="20" id="3yx-wX-PF0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zu9-bE-5o8" secondAttribute="trailing" constant="20" id="4KM-AL-s1R"/>
                             <constraint firstItem="qn0-Pz-mbT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="AL1-kV-2XK"/>
+                            <constraint firstItem="qn0-Pz-mbT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Ahq-Td-mN7"/>
                             <constraint firstItem="6cr-vm-CoI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="C5F-sg-Bfj"/>
                             <constraint firstItem="Zu9-bE-5o8" firstAttribute="top" secondItem="6cr-vm-CoI" secondAttribute="bottom" constant="20" id="Cux-Wi-Oqi"/>
                             <constraint firstItem="6cr-vm-CoI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="Fec-om-5Gf"/>
                             <constraint firstItem="Zu9-bE-5o8" firstAttribute="leading" secondItem="Dpy-gS-DTQ" secondAttribute="trailing" constant="20" id="HmW-DL-VaO"/>
                             <constraint firstItem="SjE-DF-fuC" firstAttribute="top" secondItem="Dpy-gS-DTQ" secondAttribute="bottom" constant="21" id="Svx-QD-f9m"/>
                             <constraint firstItem="RZY-zW-3TV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UbY-Jf-Gpc"/>
-                            <constraint firstItem="qn0-Pz-mbT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="XR8-tS-jiq"/>
                             <constraint firstItem="RZY-zW-3TV" firstAttribute="top" secondItem="ga9-vC-XCl" secondAttribute="bottom" constant="7" id="a9t-vD-bLa"/>
                             <constraint firstItem="HqI-pD-sla" firstAttribute="top" secondItem="Zu9-bE-5o8" secondAttribute="bottom" constant="17" id="b0d-a0-O8k"/>
                             <constraint firstItem="SjE-DF-fuC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="eQQ-i0-3Zd"/>
@@ -192,6 +192,13 @@
                                             <constraint firstAttribute="width" constant="200" id="k8R-ed-9z7"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ごほうびテキストを表示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suV-VJ-5Q1">
+                                        <rect key="frame" x="8" y="271" width="338" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
