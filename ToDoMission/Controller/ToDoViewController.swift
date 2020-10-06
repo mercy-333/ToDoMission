@@ -34,7 +34,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         reward.delegate = self
-        titleLabel.font = UIFont(name: "851MkPOP", size: 30)
+        titleLabel.font = UIFont(name: "Mukasi-Mukasi", size: 30)
         //self.view.addBackground(imageName:"stripe.png")
         //本番
         //bannerView.adUnitID = "ca-app-pub-2345881481621230/3925128565"

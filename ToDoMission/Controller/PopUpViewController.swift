@@ -26,7 +26,7 @@ class PopUpViewController: UIViewController {
         gohoubiLabel.layer.cornerRadius = 10.0
         gohoubiLabel.clipsToBounds = true
         
-        clearLabel.font = UIFont(name: "851MkPOP", size: 30)
+        clearLabel.font = UIFont(name: "Mukasi-Mukasi", size: 30)
         
         backView.layer.cornerRadius = 10.0
         
