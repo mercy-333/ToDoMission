@@ -27,6 +27,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>851MkPOP_002.ttf</string>
+		<string>gomarice_mukasi_mukasi.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

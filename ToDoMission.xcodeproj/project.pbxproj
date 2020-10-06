@@ -17,6 +17,7 @@
 		7687504B2525FD3300FBB95F /* 851MkPOP_002.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */; };
 		7687504E2526985C00FBB95F /* addBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7687504D2526985B00FBB95F /* addBackground.swift */; };
 		76D488552529B444002B09F8 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D488542529B444002B09F8 /* PopUpViewController.swift */; };
+		76D4885C252D2792002B09F8 /* gomarice_mukasi_mukasi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76D4885B252D2791002B09F8 /* gomarice_mukasi_mukasi.ttf */; };
 		B209CBB6D5E535D39F907500 /* Pods_ToDoMission.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 485977549DA2398A8A001B7B /* Pods_ToDoMission.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 851MkPOP_002.ttf; sourceTree = "<group>"; };
 		7687504D2526985B00FBB95F /* addBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBackground.swift; sourceTree = "<group>"; };
 		76D488542529B444002B09F8 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		76D4885B252D2791002B09F8 /* gomarice_mukasi_mukasi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gomarice_mukasi_mukasi.ttf; path = ../../../../../Downloads/gomarice_mukasi_mukasi.ttf; sourceTree = "<group>"; };
 		BA05032390E4FFC0EE4CE2C4 /* Pods-ToDoMission.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoMission.release.xcconfig"; path = "Target Support Files/Pods-ToDoMission/Pods-ToDoMission.release.xcconfig"; sourceTree = "<group>"; };
 		BC0161050B61D910CADF5496 /* Pods-ToDoMission.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoMission.debug.xcconfig"; path = "Target Support Files/Pods-ToDoMission/Pods-ToDoMission.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 		7654481325202F2700E49483 /* ToDoMission */ = {
 			isa = PBXGroup;
 			children = (
+				76D48858252D2578002B09F8 /* Fonts */,
 				765448282520D4C200E49483 /* Model */,
 				7654482A2520D4D900E49483 /* View */,
 				765448292520D4CD00E49483 /* Controller */,
@@ -110,12 +113,20 @@
 		7654482A2520D4D900E49483 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */,
 				7654481A25202F2700E49483 /* Main.storyboard */,
 				7654481D25202F3300E49483 /* Assets.xcassets */,
 				7654481F25202F3300E49483 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		76D48858252D2578002B09F8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */,
+				76D4885B252D2791002B09F8 /* gomarice_mukasi_mukasi.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		D36191BEEE6337374E504D2E /* Pods */ = {
@@ -191,6 +202,7 @@
 				7654481E25202F3300E49483 /* Assets.xcassets in Resources */,
 				7687504B2525FD3300FBB95F /* 851MkPOP_002.ttf in Resources */,
 				7654481C25202F2700E49483 /* Main.storyboard in Resources */,
+				76D4885C252D2792002B09F8 /* gomarice_mukasi_mukasi.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

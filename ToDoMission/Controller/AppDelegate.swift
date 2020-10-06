@@ -12,13 +12,16 @@ import GoogleMobileAds
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // "851MkPOP"
+    //
+    var mainFont:String = "Mukasi-Mukasi"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        UILabel.appearance().font = UIFont(name: "851MkPOP", size: 20)
-        UITextField.appearance().font = UIFont(name: "851MkPOP", size: 20)
+        UILabel.appearance().font = UIFont(name: mainFont, size: 20)
+        UITextField.appearance().font = UIFont(name: mainFont, size: 20)
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
