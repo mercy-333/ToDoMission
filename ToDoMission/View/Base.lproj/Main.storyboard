@@ -66,10 +66,10 @@
                                     <action selector="addMission:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FZg-I5-d5y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqI-pD-sla">
-                                <rect key="frame" x="180" y="150" width="80" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  0%   ( 0 / 0 )" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqI-pD-sla">
+                                <rect key="frame" x="140" y="150" width="160" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="1zd-b3-Rc1"/>
+                                    <constraint firstAttribute="width" constant="160" id="1zd-b3-Rc1"/>
                                     <constraint firstAttribute="height" constant="30" id="hHN-Gh-iDa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -141,7 +141,7 @@
                             <constraint firstItem="HqI-pD-sla" firstAttribute="top" secondItem="Zu9-bE-5o8" secondAttribute="bottom" constant="17" id="b0d-a0-O8k"/>
                             <constraint firstItem="SjE-DF-fuC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="eQQ-i0-3Zd"/>
                             <constraint firstItem="RZY-zW-3TV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eau-Hh-mlq"/>
-                            <constraint firstItem="HqI-pD-sla" firstAttribute="leading" secondItem="SjE-DF-fuC" secondAttribute="trailing" constant="80" id="kcQ-1k-vvf"/>
+                            <constraint firstItem="HqI-pD-sla" firstAttribute="leading" secondItem="SjE-DF-fuC" secondAttribute="trailing" constant="40" id="kcQ-1k-vvf"/>
                             <constraint firstItem="ga9-vC-XCl" firstAttribute="top" secondItem="Zu9-bE-5o8" secondAttribute="bottom" constant="15" id="lbc-dK-ffo"/>
                             <constraint firstItem="qn0-Pz-mbT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mkV-0L-cQg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ga9-vC-XCl" secondAttribute="trailing" constant="20" id="ovk-Xf-71x"/>

@@ -132,7 +132,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         result = Float(countTrue) / Float(isCheckList.count) * 100
         let result_str = String(format: "%.0f", result)
-        archivementRate.text = "\(result_str) %"
+        archivementRate.text = "\(result_str) %   ( \(countTrue) / \(isCheckList.count) )"
         
         if result.isEqual(to: 100) {
             gohoubi()
