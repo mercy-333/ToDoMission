@@ -192,9 +192,23 @@
                                             <constraint firstAttribute="width" constant="200" id="k8R-ed-9z7"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ごほうびテキストを表示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suV-VJ-5Q1">
-                                        <rect key="frame" x="8" y="271" width="338" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ミッションクリア！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJY-iY-CzM">
+                                        <rect key="frame" x="40" y="260" width="274" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ごほうびをどうぞ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho1-IY-BMe">
+                                        <rect key="frame" x="95" y="316" width="164" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ごほうび" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suV-VJ-5Q1">
+                                        <rect key="frame" x="8" y="370" width="338" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Kf7-ff-5Cm"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -202,7 +216,16 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="QJY-iY-CzM" firstAttribute="top" secondItem="zHZ-HY-MiY" secondAttribute="bottom" constant="30" id="97s-vq-ckJ"/>
                                     <constraint firstItem="zHZ-HY-MiY" firstAttribute="top" secondItem="yAw-cp-Im0" secondAttribute="top" constant="30" id="V1r-Uv-Jt2"/>
+                                    <constraint firstAttribute="trailing" secondItem="ho1-IY-BMe" secondAttribute="trailing" constant="95" id="VzH-lQ-mht"/>
+                                    <constraint firstAttribute="trailing" secondItem="QJY-iY-CzM" secondAttribute="trailing" constant="40" id="hA6-gv-3EC"/>
+                                    <constraint firstItem="QJY-iY-CzM" firstAttribute="leading" secondItem="yAw-cp-Im0" secondAttribute="leading" constant="40" id="hJ8-g6-VgY"/>
+                                    <constraint firstItem="suV-VJ-5Q1" firstAttribute="top" secondItem="ho1-IY-BMe" secondAttribute="bottom" constant="30" id="igS-AR-5DG"/>
+                                    <constraint firstItem="ho1-IY-BMe" firstAttribute="top" secondItem="QJY-iY-CzM" secondAttribute="bottom" constant="20" id="mpY-mb-4E0"/>
+                                    <constraint firstItem="ho1-IY-BMe" firstAttribute="leading" secondItem="yAw-cp-Im0" secondAttribute="leading" constant="95" id="s6p-mb-nkF"/>
+                                    <constraint firstItem="suV-VJ-5Q1" firstAttribute="leading" secondItem="yAw-cp-Im0" secondAttribute="leading" constant="8" id="slT-pF-rsV"/>
+                                    <constraint firstAttribute="trailing" secondItem="suV-VJ-5Q1" secondAttribute="trailing" constant="8" id="wJL-bp-qQw"/>
                                     <constraint firstItem="zHZ-HY-MiY" firstAttribute="centerX" secondItem="yAw-cp-Im0" secondAttribute="centerX" id="zCz-9m-lY2"/>
                                 </constraints>
                             </view>
@@ -218,6 +241,11 @@
                             <constraint firstItem="yAw-cp-Im0" firstAttribute="leading" secondItem="xhm-hr-ONa" secondAttribute="leading" constant="30" id="qn8-zW-kBf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backView" destination="yAw-cp-Im0" id="pcS-NY-d7Z"/>
+                        <outlet property="clearLabel" destination="QJY-iY-CzM" id="ced-mp-RiN"/>
+                        <outlet property="gohoubiLabel" destination="suV-VJ-5Q1" id="FPX-J6-o9k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3o7-Jn-TpL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
