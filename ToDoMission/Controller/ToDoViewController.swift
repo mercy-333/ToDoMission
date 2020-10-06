@@ -35,7 +35,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         reward.delegate = self
         titleLabel.font = UIFont(name: "851MkPOP", size: 30)
-        self.view.addBackground(imageName:"stripe.png")
+        //self.view.addBackground(imageName:"stripe.png")
         //本番
         //bannerView.adUnitID = "ca-app-pub-2345881481621230/3925128565"
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
@@ -146,11 +146,21 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PopUpSegue" {
+            let nextView = segue.destination as! PopUpViewController
+            nextView.rewardGetStr = reward.text!
+            
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true
     }
+    
+    // 遷移テスト用　最後に消す
     @IBAction func segueTest(_ sender: Any) {
         performSegue(withIdentifier: "PopUpSegue", sender: nil)
     }

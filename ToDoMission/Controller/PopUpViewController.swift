@@ -13,6 +13,9 @@ class PopUpViewController: UIViewController {
     @IBOutlet weak var gohoubiLabel: UILabel!
     @IBOutlet weak var clearLabel: UILabel!
     @IBOutlet weak var backView: UIView!
+    
+    var rewardGetStr:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,11 +30,10 @@ class PopUpViewController: UIViewController {
         
         backView.layer.cornerRadius = 10.0
         
+        gohoubiLabel.text = rewardGetStr
+        
     }
     
-
-
-
     @IBAction func back(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
