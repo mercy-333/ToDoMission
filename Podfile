@@ -8,5 +8,8 @@ target 'ToDoMission' do
   # Pods for ToDoMission
 pod 'Google-Mobile-Ads-SDK'
 pod 'SwiftGifOrigin'
+pod 'FSCalendar'
+pod 'CalculateCalendarLogic'
+pod 'RealmSwift'
 
 end

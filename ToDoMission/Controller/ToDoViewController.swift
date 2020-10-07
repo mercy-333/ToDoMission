@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMobileAds
+import RealmSwift
+import CalculateCalendarLogic
 
 class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -94,6 +96,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.missionTable.insertRows(at: [IndexPath(row: self.missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
                 
                 self.updateArchivementRate()
+                
+                // Realm更新
             }
         }
         
@@ -135,15 +139,25 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         archivementRate.text = "\(result_str) %   ( \(countTrue) / \(isCheckList.count) )"
         
         if result.isEqual(to: 100) {
-            gohoubi()
+            performSegue(withIdentifier: "PopUpSegue", sender: nil)
+        }
+    }
+    
+    func createMisson(success: @escaping() ->Void) {
+        do {
+            let realm = try Realm()
+            let todoModel = TodoModel()
+            todoModel.date = ""
+            todoModel.missionList = "i"
+            
+            
+        } catch {
+            print("create misson error.")
         }
     }
     
     func gohoubi(){
-        print("やるやん！！！")
-        
         performSegue(withIdentifier: "PopUpSegue", sender: nil)
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
