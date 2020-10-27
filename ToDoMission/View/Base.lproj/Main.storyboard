@@ -279,14 +279,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eb3-zC-9Ie" customClass="FSCalendar">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eb3-zC-9Ie" customClass="FSCalendar">
                                 <rect key="frame" x="20" y="44" width="374" height="374"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RNQ-zD-4Cl"/>
                         <color key="backgroundColor" red="0.71656423807144165" green="0.93003648519515991" blue="0.67979592084884644" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eb3-zC-9Ie" firstAttribute="leading" secondItem="RNQ-zD-4Cl" secondAttribute="leading" constant="20" id="I9Q-M7-KXT"/>
+                            <constraint firstItem="eb3-zC-9Ie" firstAttribute="top" secondItem="RNQ-zD-4Cl" secondAttribute="top" id="OMQ-qz-8Pl"/>
+                            <constraint firstItem="RNQ-zD-4Cl" firstAttribute="trailing" secondItem="eb3-zC-9Ie" secondAttribute="trailing" constant="20" id="bCP-TS-BaE"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="合計" image="calendar" catalog="system" id="cYw-CG-QGg"/>
                 </viewController>

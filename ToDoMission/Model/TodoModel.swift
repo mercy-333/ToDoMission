@@ -11,7 +11,17 @@ import RealmSwift
 
 class TodoModel: Object {
     @objc dynamic var date = "" //yyyy.mm.dd
-    @objc dynamic var missionList = [String]()
-    @objc dynamic var isCheckList = [Bool]()
-    @objc dynamic var gohoubi = ""    
+    @objc dynamic var gohoubi = ""
+    @objc dynamic var completeFlg = false
+    var missionInfoList = List<missionInfo>()
+    
+    // 日付を主キーとする
+    override class func primaryKey() -> String? {
+        return "date"
+    }
+}
+
+class missionInfo: Object {
+    @objc dynamic var title: String = ""
+    @objc dynamic var isCheck: Bool = false
 }
