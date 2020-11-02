@@ -45,21 +45,49 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         bannerView.load(GADRequest())
         
         // realmインスタンス生成
-        do {
-            let realm = try Realm()
-            let todayRealm = realm.objects(TodoModel.self).filter("date == '\(getDateStr())'")
-            //let todayRealm = realm.objects(TodoModel.self)
-            print("###realm file is exist, don't create.")
-            print("###[\(getDateStr())]todayRealm count :  \(todayRealm.count)")
-        } catch {
-            print("###realm file is not exist, so create.")
-            createMission {
-                print("Realm create success!")
-            }
-        
+        //let todayRealm = realm.objects(TodoModel.self).filter("date == '\(getDateStr())'")
+        createMission {
+            print("Realm create success!")
         }
     }
     
+    func createMission(success: @escaping() ->Void) {
+        print("###createMission() call.")
+        let nowDate = getDateStr()
+        do {
+
+            let realm = try Realm()
+            let todoModel = TodoModel()
+            
+            todoModel.date = nowDate
+            todoModel.gohoubi = "testtest"
+
+            try realm.write {
+                realm.add(todoModel)
+                success()
+            }
+        } catch {
+            print("###create mission error. PK:" + nowDate)
+        }
+    }
+    
+    func updateMission(success: @escaping() -> Void) {
+        print("updateMission() call.")
+        let nowDate = getDateStr()
+        do {
+            let realm =  try! Realm()
+            let results = realm.objects(TodoModel.self).filter("date == '\(nowDate)'").first
+            
+            try! realm.write {
+                
+                results?.missionInfoList
+                success()
+            }
+            
+        } catch {
+            print("###update mission error. PK:" + nowDate)
+        }
+    }
     /* ミッション内容の数 */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return missionList.count
@@ -158,49 +186,14 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func createMission(success: @escaping() ->Void) {
-        print("###createMission() call.")
-        let nowDate = getDateStr()
-        do {
 
-            let realm = try Realm()
-            let todoModel = TodoModel()
-            
-            todoModel.date = nowDate
-
-            try realm.write {
-                realm.add(todoModel)
-                success()
-            }
-        } catch {
-            print("###create mission error. PK:" + nowDate)
-        }
-    }
-    
-    func updateMission(success: @escaping() -> Void) {
-        print("updateMission() call.")
-        let nowDate = getDateStr()
-        do {
-            let realm =  try! Realm()
-            let results = realm.objects(TodoModel.self).filter("date == '\(nowDate)'").first
-            
-            try! realm.write {
-                
-                results?.missionInfoList
-                success()
-            }
-            
-        } catch {
-            print("###update mission error. PK:" + nowDate)
-        }
-    }
 
     // "YYMMDD"の日付を返却
     func getDateStr() -> String {
         let date = Date()
         let df = DateFormatter()
         df.dateFormat = "yyyyMMdd"
-        print("getDateStr() : " + df.string(from: date))
+        print("###getDateStr() : " + df.string(from: date))
         return df.string(from: date)
     }
     
