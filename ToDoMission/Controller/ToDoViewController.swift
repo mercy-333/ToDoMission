@@ -32,62 +32,40 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* true:達成 / false:未達成 */
     var isCheckList = [Bool]()
     
+    let todoCommon = TodoCommon()
+
+    /*----------------------*/
+    /* ViewDidLoad          */
+    /*----------------------*/
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("#############################")
+        print("##### APPLICATION START #####")
+        print("#############################")
 
         reward.delegate = self
         titleLabel.font = UIFont(name: "Mukasi-Mukasi", size: 30)
         //self.view.addBackground(imageName:"stripe.png")
+        
         //本番
         //bannerView.adUnitID = "ca-app-pub-2345881481621230/3925128565"
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
+        print("#bannerView loaded.")
         
-        // realmインスタンス生成
-        //let todayRealm = realm.objects(TodoModel.self).filter("date == '\(getDateStr())'")
-        createMission {
-            print("Realm create success!")
+        todoCommon.updateDateStr()
+        
+        // Realmインスタンス生成
+        if (todoCommon.isCheckRealm()) {
+                // 現在日付のデータが存在している場合は生成しない
+            } else {
+                self.todoCommon.createRealm()
         }
+        
+        print("#viewDidLoad() done.")
     }
     
-    func createMission(success: @escaping() ->Void) {
-        print("###createMission() call.")
-        let nowDate = getDateStr()
-        do {
-
-            let realm = try Realm()
-            let todoModel = TodoModel()
-            
-            todoModel.date = nowDate
-            todoModel.gohoubi = "testtest"
-
-            try realm.write {
-                realm.add(todoModel)
-                success()
-            }
-        } catch {
-            print("###create mission error. PK:" + nowDate)
-        }
-    }
-    
-    func updateMission(success: @escaping() -> Void) {
-        print("updateMission() call.")
-        let nowDate = getDateStr()
-        do {
-            let realm =  try! Realm()
-            let results = realm.objects(TodoModel.self).filter("date == '\(nowDate)'").first
-            
-            try! realm.write {
-                
-                results?.missionInfoList
-                success()
-            }
-            
-        } catch {
-            print("###update mission error. PK:" + nowDate)
-        }
-    }
     /* ミッション内容の数 */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return missionList.count
@@ -116,12 +94,12 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             cellButton.tag = indexPath.row
             isCheckList.insert(false, at: isCheckList.endIndex)
         } else {
-            print("###nill eror")
+            print("##nill eror")
         }
         return cell
     }
 
-    /** 追加 ボタンをタップ*/
+    /** 追加 ボタンをタップ */
     @IBAction func addMission(_ sender: Any) {
         
         // アラート画面設定
@@ -131,7 +109,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         alertController.addTextField(configurationHandler: nil)
         
         // クロージャ: OKタップ
-        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (action: UIAlertAction) in
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { [self] (action: UIAlertAction) in
             if let textField = alertController.textFields?.first {
                 // ミッションリスト配列に追加
                 self.missionList.insert(textField.text!, at: self.missionList.endIndex)
@@ -139,6 +117,10 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.missionTable.insertRows(at: [IndexPath(row: self.missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
                 
                 self.updateArchivementRate()
+                self.todoCommon.addMissionList(addStr:textField.text!)
+
+                self.todoCommon.updateGohoubi(dateStr: "20201103",gohoubiStr: reward.text! )
+
                 
                 // Realm更新
             }
@@ -165,6 +147,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             (isCheckList[sender.tag]) = true
         }
         updateArchivementRate()
+
     }
     
     /* 達成率更新 */
@@ -184,17 +167,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         if result.isEqual(to: 100) {
             performSegue(withIdentifier: "PopUpSegue", sender: nil)
         }
-    }
-    
-
-
-    // "YYMMDD"の日付を返却
-    func getDateStr() -> String {
-        let date = Date()
-        let df = DateFormatter()
-        df.dateFormat = "yyyyMMdd"
-        print("###getDateStr() : " + df.string(from: date))
-        return df.string(from: date)
     }
     
     func gohoubi(){
@@ -217,7 +189,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // 遷移テスト用　最後に消す
     @IBAction func segueTest(_ sender: Any) {
-        print(NSDate.now)
+        print("###segue:\(NSDate.now)")
         performSegue(withIdentifier: "PopUpSegue", sender: nil)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		489842242551122400A2EE37 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489842232551122400A2EE37 /* Common.swift */; };
 		7654481525202F2700E49483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654481425202F2700E49483 /* AppDelegate.swift */; };
 		7654481725202F2700E49483 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654481625202F2700E49483 /* SceneDelegate.swift */; };
 		7654481C25202F2700E49483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7654481A25202F2700E49483 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		485977549DA2398A8A001B7B /* Pods_ToDoMission.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoMission.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		489842232551122400A2EE37 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		7654481125202F2700E49483 /* ToDoMission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoMission.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7654481425202F2700E49483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7654481625202F2700E49483 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,11 +83,11 @@
 		7654481325202F2700E49483 /* ToDoMission */ = {
 			isa = PBXGroup;
 			children = (
+				7654482225202F3300E49483 /* Info.plist */,
 				76D48858252D2578002B09F8 /* Fonts */,
 				765448282520D4C200E49483 /* Model */,
 				7654482A2520D4D900E49483 /* View */,
 				765448292520D4CD00E49483 /* Controller */,
-				7654482225202F3300E49483 /* Info.plist */,
 			);
 			path = ToDoMission;
 			sourceTree = "<group>";
@@ -95,6 +97,7 @@
 			children = (
 				7687504D2526985B00FBB95F /* addBackground.swift */,
 				76D4886C252E74D4002B09F8 /* TodoModel.swift */,
+				489842232551122400A2EE37 /* Common.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				489842242551122400A2EE37 /* Common.swift in Sources */,
 				7654482C2520D56100E49483 /* ToDoViewController.swift in Sources */,
 				76D488552529B444002B09F8 /* PopUpViewController.swift in Sources */,
 				7687504E2526985C00FBB95F /* addBackground.swift in Sources */,
