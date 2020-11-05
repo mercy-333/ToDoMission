@@ -50,26 +50,27 @@ class TodoCommon {
     
     //Realmファイルの存在チェック
     func isCheckRealm() ->Bool {
-        print("###checkRealm() start. [\(todayStr)]")
+        debugLog("start.")
+        
         do {
             let realmCheck = try Realm()
             let todayRealm = realmCheck.objects(TodoModel.self).filter("date == '\(todayStr)'")
             if (todayRealm.count > 0) {
-                print("###Realm file is already exist.")
+                debugLog("Realm file is already exist.")
                 return true
             } else {
-                print("###Realm file is not exist.")
+                debugLog("Realm file is not exist.")
                 return false
             }
         } catch  {
-            print("### Realm file check error.")
+            debugLog("Realm file check error.")
             return false
         }
     }
     
     //Realmファイル生成
     func createRealm() {
-        print("### createRealm() start.[\(todayStr)")
+        debugLog("start :\(todayStr)")
         do {
             let realm = try! Realm()
             let todoModel = TodoModel()
@@ -78,30 +79,44 @@ class TodoCommon {
                 realm.add(todoModel)
             }
         } catch {
-            print("###createRealm error.")
+            debugLog("createRealm error.")
         }
+        debugLog("success.")
     }
     
     //更新:ごほうび
-    func updateGohoubi(dateStr:String, gohoubiStr:String) {
-        print("###updateGohoubi() start. [\(dateStr),\(gohoubiStr)]")
+    func updateGohoubi(gohoubiStr:String) {
+        debugLog("start. :[\(gohoubiStr)]")
         do {
             let realm =  try Realm()
-            let results = realm.objects(TodoModel.self).filter("date == '\(dateStr)'").first
-            
+            let results = realm.objects(TodoModel.self).filter("date == '\(todayStr)'").first
             try! realm.write {
                 results?.gohoubi = gohoubiStr
             }
         } catch {
-            print("###update gohoubi error.")
+            debugLog("update error.")
         }
-        print("###updateGohoubi() end.")
-        
+        debugLog("success.")
+    }
+    
+    //更新:完了フラグ
+    func updateCompleteFlg(flg:Bool) {
+        debugLog("start. :set[\(flg)]")
+        do {
+            let realm =  try Realm()
+            let results = realm.objects(TodoModel.self).filter("date == '\(todayStr)'").first
+            try! realm.write {
+                results?.completeFlg = flg
+            }
+        } catch {
+            debugLog("update error.")
+        }
+        debugLog("success.")
     }
     
     //追加:ミッションリスト
     func addMissionList(addStr:String) {
-        print("###updateMission() call.")
+        debugLog("start.")
         do {
             let realm =  try Realm()
             let results = realm.objects(TodoModel.self).filter("date == '\(todayStr)'").first
@@ -109,14 +124,38 @@ class TodoCommon {
             try! realm.write {
                 let addInfo:missionInfo = missionInfo(value: ["title":addStr, "isCheck":false])
                 results?.missionInfoList.append(addInfo)
-                print("### Add info:\(addInfo)")
+                debugLog("Add info:\(addInfo)")
             }
         } catch {
-            print("###add mission error.")
+            debugLog("add mission error.")
         }
+        debugLog("success.")
     }
+    
     //更新:ミッションリスト
-    func updateMission(){
-        
+    func updateMission(missionTitle:String, missionIsCheck:Bool) {
+        debugLog("start.")
+        do {
+            let realm =  try Realm()
+            let results = realm.objects(TodoModel.self).filter("date == '\(todayStr)'").first
+            
+            try! realm.write {
+                /*results?.missionInfoList = tmpInfoList
+                debugLog("updated :\(tmpInfoList)")
+                */
+                for i in 0..<(results?.missionInfoList.count)! {
+                    if (results?.missionInfoList[i].title == missionTitle ) {
+                        debugLog("Hit! cnt[\(i)]")
+                        results?.missionInfoList[i].isCheck = missionIsCheck
+                    }
+                }
+                debugLog("updated : \(String(describing: results?.missionInfoList))")
+            }
+        } catch {
+            debugLog("add mission error.")
+        }
+        debugLog("success.")
     }
+    
+
 }

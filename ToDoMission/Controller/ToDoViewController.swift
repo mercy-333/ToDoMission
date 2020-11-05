@@ -117,9 +117,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.missionTable.insertRows(at: [IndexPath(row: self.missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
                 
                 self.updateArchivementRate()
+                
                 self.todoCommon.addMissionList(addStr:textField.text!)
-
-                self.todoCommon.updateGohoubi(dateStr: "20201103",gohoubiStr: reward.text! )
+                self.todoCommon.updateGohoubi(gohoubiStr: reward.text! )
 
                 
                 // Realm更新
@@ -142,9 +142,11 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (isCheckList[sender.tag]) {
             sender.setImage(unCheckMark, for: .normal)
             (isCheckList[sender.tag]) = false
+            todoCommon.updateMission(missionTitle:missionList[sender.tag], missionIsCheck:false)
         } else {
             sender.setImage(checkMark, for: .normal)
             (isCheckList[sender.tag]) = true
+            todoCommon.updateMission(missionTitle:missionList[sender.tag], missionIsCheck:true)
         }
         updateArchivementRate()
 
@@ -166,6 +168,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if result.isEqual(to: 100) {
             performSegue(withIdentifier: "PopUpSegue", sender: nil)
+            todoCommon.updateCompleteFlg(flg:true)
         }
     }
     
