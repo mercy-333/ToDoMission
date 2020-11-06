@@ -157,5 +157,20 @@ class TodoCommon {
         debugLog("success.")
     }
     
+    //取得:Realmファイル
+    func getTodayRealm() ->Any {
+        debugLog("start.")
+        var results = TodoModel()
+        
+        do {
+            let realm =  try Realm()
+            results = realm.objects(TodoModel.self).filter("date == '\(todayStr)'").first!
+            
+        } catch {
+            debugLog("add mission error.")
+        }
+        debugLog("success.")
+        return results
+    }
 
 }

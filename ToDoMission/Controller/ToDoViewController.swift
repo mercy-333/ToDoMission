@@ -39,9 +39,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     /*----------------------*/
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("#############################")
-        print("##### APPLICATION START #####")
-        print("#############################")
+        debugLog("#############################")
+        debugLog("##### APPLICATION START #####")
+        debugLog("#############################")
 
         reward.delegate = self
         titleLabel.font = UIFont(name: "Mukasi-Mukasi", size: 30)
@@ -52,18 +52,24 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
-        print("#bannerView loaded.")
+        debugLog("bannerView loaded.")
         
         todoCommon.updateDateStr()
         
         // Realmインスタンス生成
         if (todoCommon.isCheckRealm()) {
-                // 現在日付のデータが存在している場合は生成しない
-            } else {
-                self.todoCommon.createRealm()
+            // 現在日付のデータが存在している場合は生成せず既にあるデータをロードする
+            let todayRealmData:TodoModel = todoCommon.getTodayRealm() as! TodoModel
+            for i in 0..<todayRealmData.missionInfoList.count {
+                missionList.insert(todayRealmData.missionInfoList[i].title, at: self.missionList.endIndex)
+                isCheckList.insert(todayRealmData.missionInfoList[i].isCheck, at: isCheckList.endIndex)
+            }
+            reward.text = todayRealmData.gohoubi
+        } else {
+            self.todoCommon.createRealm()
         }
         
-        print("#viewDidLoad() done.")
+        debugLog("success.")
     }
     
     /* ミッション内容の数 */
@@ -72,8 +78,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     /* セルを生成時にcall **/
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
         // セルの取得(再利用)
         let cell = missionTable.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
         
@@ -84,17 +89,22 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         // カスタムセルのボタン(tag1)をunCkeckMarkに設定
         if (cell.viewWithTag(1) as? UIButton) != nil {
             let cellButton = cell.viewWithTag(1) as! UIButton
-            cellButton.setImage(unCheckMark, for: .normal)
         
+            // true/falseで画像切り替え
+            if (isCheckList[indexPath.row] == true) {
+                cellButton.setImage(checkMark, for: .normal)
+            } else {
+                cellButton.setImage(unCheckMark, for: .normal)
+            }
+                
             // カスタムセルのボタンをタップした時にcallするメソッドを設定
             // * チェックボタンを切り替える
             cellButton.addTarget(self, action: #selector(checkButton(_:)), for: .touchUpInside)
 
             // カスタムセルのボタンにrowをタグ値として設定
             cellButton.tag = indexPath.row
-            isCheckList.insert(false, at: isCheckList.endIndex)
         } else {
-            print("##nill eror")
+            debugLog("nill eror")
         }
         return cell
     }
@@ -117,12 +127,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.missionTable.insertRows(at: [IndexPath(row: self.missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
                 
                 self.updateArchivementRate()
-                
                 self.todoCommon.addMissionList(addStr:textField.text!)
                 self.todoCommon.updateGohoubi(gohoubiStr: reward.text! )
-
-                
-                // Realm更新
             }
         }
         
@@ -169,6 +175,8 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         if result.isEqual(to: 100) {
             performSegue(withIdentifier: "PopUpSegue", sender: nil)
             todoCommon.updateCompleteFlg(flg:true)
+        } else {
+            todoCommon.updateCompleteFlg(flg:false)
         }
     }
     
@@ -192,7 +200,15 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // 遷移テスト用　最後に消す
     @IBAction func segueTest(_ sender: Any) {
-        print("###segue:\(NSDate.now)")
+        debugLog("segue:\(NSDate.now)")
         performSegue(withIdentifier: "PopUpSegue", sender: nil)
+    }
+    //デバッグログ
+    func debugLog(_ message: String = "", function: String = #function, file: String = #file, line: Int = #line) {
+        #if DEBUG
+            let fileName = URL(string: file)!.lastPathComponent
+            //NSLog("\(fileName) #\(line) \(function): \(message)")
+            print("# \(fileName) #\(line) \(function): \(message)")
+        #endif
     }
 }
