@@ -33,6 +33,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isCheckList = [Bool]()
     
     let todoCommon = TodoCommon()
+    
+    //Realmデータがあった場合、何個データがあるかを保持
+    var realmCount = 0
 
     /*----------------------*/
     /* ViewDidLoad          */
@@ -65,6 +68,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 isCheckList.insert(todayRealmData.missionInfoList[i].isCheck, at: isCheckList.endIndex)
             }
             reward.text = todayRealmData.gohoubi
+            realmCount = todayRealmData.missionInfoList.count
+            updateArchivementRate()
+            debugLog("realm data loaded.")
         } else {
             self.todoCommon.createRealm()
         }
@@ -97,7 +103,16 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         // カスタムセルのボタン(tag1)をunCkeckMarkに設定
         if (cell.viewWithTag(1) as? UIButton) != nil {
             let cellButton = cell.viewWithTag(1) as! UIButton
-        
+
+            //新規追加(Realmに存在しない)のみ リストを更新
+            //Realmデータある時は直接リスト更新するのでスキップ
+            if (indexPath.row < realmCount) {
+                /* 何もしない */
+            } else {
+                isCheckList.insert(false, at: isCheckList.endIndex)
+                debugLog("new list added.")
+            }
+
             // true/falseで画像切り替え
             if (isCheckList[indexPath.row] == true) {
                 cellButton.setImage(checkMark, for: .normal)
@@ -206,7 +221,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         return true
     }
     
-    // 遷移テスト用　最後に消す
+    // デバッグ用　最後に消す
     @IBAction func segueTest(_ sender: Any) {
         debugLog("segue:\(NSDate.now)")
         performSegue(withIdentifier: "PopUpSegue", sender: nil)
