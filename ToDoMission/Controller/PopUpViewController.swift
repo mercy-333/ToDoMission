@@ -2,8 +2,8 @@
 //  PopUpViewController.swift
 //  ToDoMission
 //
-//  Created by Konta on 2020/10/04.
-//  Copyright © 2020 Masakazu Konno. All rights reserved.
+//  Created by Mercy on 2020/10/04.
+//  Copyright © 2020 Mercy's App. All rights reserved.
 //
 
 import UIKit

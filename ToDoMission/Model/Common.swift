@@ -3,7 +3,7 @@
 //  ToDoMission
 //
 //  Created by Mercy on 2020/11/03.
-//  Copyright © 2020 Masakazu Konno. All rights reserved.
+//  Copyright © 2020 Mercy's App. All rights reserved.
 //
 
 import Foundation
