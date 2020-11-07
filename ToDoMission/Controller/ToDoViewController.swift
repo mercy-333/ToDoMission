@@ -69,7 +69,15 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.todoCommon.createRealm()
         }
         
+        //ごほうびTextFieldの更新callback設定
+        self.reward.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+
         debugLog("success.")
+    }
+    
+    // ごほうびTextLabelが更新されたらcall
+    @objc func textFieldDidChange(_ textFiled: UITextField) {
+        todoCommon.updateGohoubi(gohoubiStr:textFiled.text!)
     }
     
     /* ミッション内容の数 */
