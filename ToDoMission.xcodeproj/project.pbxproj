@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		487731A3255B53A700FD7947 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487731A2255B53A700FD7947 /* CalendarViewController.swift */; };
 		489842242551122400A2EE37 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489842232551122400A2EE37 /* Common.swift */; };
+		48E79E25255D6976004A536D /* gomarice_mukasi_mukasi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48E79E24255D6976004A536D /* gomarice_mukasi_mukasi.ttf */; };
 		7654481525202F2700E49483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654481425202F2700E49483 /* AppDelegate.swift */; };
 		7654481725202F2700E49483 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654481625202F2700E49483 /* SceneDelegate.swift */; };
 		7654481C25202F2700E49483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7654481A25202F2700E49483 /* Main.storyboard */; };
 		7654481E25202F3300E49483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7654481D25202F3300E49483 /* Assets.xcassets */; };
 		7654482125202F3300E49483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7654481F25202F3300E49483 /* LaunchScreen.storyboard */; };
 		7654482C2520D56100E49483 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654482B2520D56100E49483 /* ToDoViewController.swift */; };
-		7687504B2525FD3300FBB95F /* 851MkPOP_002.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */; };
 		7687504E2526985C00FBB95F /* addBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7687504D2526985B00FBB95F /* addBackground.swift */; };
 		76D488552529B444002B09F8 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D488542529B444002B09F8 /* PopUpViewController.swift */; };
 		76D4886D252E74D4002B09F8 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D4886C252E74D4002B09F8 /* TodoModel.swift */; };
@@ -26,7 +26,7 @@
 		485977549DA2398A8A001B7B /* Pods_ToDoMission.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoMission.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		487731A2255B53A700FD7947 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		489842232551122400A2EE37 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		48E79E21255C0D97004A536D /* gomarice_mukasi_mukasi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gomarice_mukasi_mukasi.ttf; sourceTree = "<group>"; };
+		48E79E24255D6976004A536D /* gomarice_mukasi_mukasi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gomarice_mukasi_mukasi.ttf; sourceTree = "<group>"; };
 		7654481125202F2700E49483 /* ToDoMission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoMission.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7654481425202F2700E49483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7654481625202F2700E49483 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +35,6 @@
 		7654482025202F3300E49483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7654482225202F3300E49483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7654482B2520D56100E49483 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
-		7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 851MkPOP_002.ttf; sourceTree = "<group>"; };
 		7687504D2526985B00FBB95F /* addBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBackground.swift; sourceTree = "<group>"; };
 		76D488542529B444002B09F8 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		76D4886C252E74D4002B09F8 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
@@ -128,8 +127,7 @@
 		76D48858252D2578002B09F8 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				7687504A2525FD3300FBB95F /* 851MkPOP_002.ttf */,
-				48E79E21255C0D97004A536D /* gomarice_mukasi_mukasi.ttf */,
+				48E79E24255D6976004A536D /* gomarice_mukasi_mukasi.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -205,8 +203,8 @@
 			files = (
 				7654482125202F3300E49483 /* LaunchScreen.storyboard in Resources */,
 				7654481E25202F3300E49483 /* Assets.xcassets in Resources */,
-				7687504B2525FD3300FBB95F /* 851MkPOP_002.ttf in Resources */,
 				7654481C25202F2700E49483 /* Main.storyboard in Resources */,
+				48E79E25255D6976004A536D /* gomarice_mukasi_mukasi.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

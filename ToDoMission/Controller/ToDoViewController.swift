@@ -115,9 +115,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             // true/falseで画像切り替え
             if (isCheckList[indexPath.row] == true) {
-                cellButton.setImage(checkMark, for: .normal)
+                cellButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
             } else {
-                cellButton.setImage(unCheckMark, for: .normal)
+                cellButton.setImage(UIImage(systemName: "circle"), for: .normal)
             }
                 
             // カスタムセルのボタンをタップした時にcallするメソッドを設定
@@ -169,11 +169,11 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     // チェックボックス画像を切り替える
     @objc func checkButton(_ sender:UIButton) {
         if (isCheckList[sender.tag]) {
-            sender.setImage(unCheckMark, for: .normal)
+            sender.setImage(UIImage(systemName: "circle"), for: .normal)
             (isCheckList[sender.tag]) = false
             todoCommon.updateMission(missionTitle:missionList[sender.tag], missionIsCheck:false)
         } else {
-            sender.setImage(checkMark, for: .normal)
+            sender.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
             (isCheckList[sender.tag]) = true
             todoCommon.updateMission(missionTitle:missionList[sender.tag], missionIsCheck:true)
         }
