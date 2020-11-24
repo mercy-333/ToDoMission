@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a8q-jc-Jda">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a8q-jc-Jda">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -287,19 +287,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eb3-zC-9Ie" customClass="FSCalendar">
-                                <rect key="frame" x="20" y="44" width="374" height="300"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="RG5-Ud-De6"/>
-                                    <constraint firstAttribute="width" constant="374" id="cfM-M9-VgU"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="YYYY年MM月"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
                                         <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayHeight">
-                                        <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
                                         <real key="value" value="0.0"/>
@@ -310,10 +306,13 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsBoundingRectWhenChangingMonths" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4zy-Nw-GGt">
-                                <rect key="frame" x="20" y="364" width="374" height="429"/>
+                                <rect key="frame" x="0.0" y="344" width="414" height="469"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -321,13 +320,13 @@
                         <viewLayoutGuide key="safeArea" id="RNQ-zD-4Cl"/>
                         <color key="backgroundColor" red="0.71656423807144165" green="0.93003648519515991" blue="0.67979592084884644" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="RNQ-zD-4Cl" firstAttribute="bottom" secondItem="4zy-Nw-GGt" secondAttribute="bottom" constant="20" id="6xE-SD-0e1"/>
-                            <constraint firstItem="eb3-zC-9Ie" firstAttribute="leading" secondItem="RNQ-zD-4Cl" secondAttribute="leading" constant="20" id="I9Q-M7-KXT"/>
+                            <constraint firstItem="4zy-Nw-GGt" firstAttribute="leading" secondItem="RNQ-zD-4Cl" secondAttribute="leading" id="56C-Lv-qN7"/>
+                            <constraint firstItem="eb3-zC-9Ie" firstAttribute="leading" secondItem="RNQ-zD-4Cl" secondAttribute="leading" id="I9Q-M7-KXT"/>
+                            <constraint firstItem="4zy-Nw-GGt" firstAttribute="top" secondItem="RNQ-zD-4Cl" secondAttribute="top" constant="300" id="LgZ-Ey-UTU"/>
                             <constraint firstItem="eb3-zC-9Ie" firstAttribute="top" secondItem="RNQ-zD-4Cl" secondAttribute="top" id="OMQ-qz-8Pl"/>
-                            <constraint firstItem="4zy-Nw-GGt" firstAttribute="top" secondItem="eb3-zC-9Ie" secondAttribute="bottom" constant="20" id="WXh-kY-fbl"/>
-                            <constraint firstItem="4zy-Nw-GGt" firstAttribute="leading" secondItem="RNQ-zD-4Cl" secondAttribute="leading" constant="20" id="ZJz-Dn-Twb"/>
-                            <constraint firstItem="RNQ-zD-4Cl" firstAttribute="trailing" secondItem="eb3-zC-9Ie" secondAttribute="trailing" constant="20" id="bCP-TS-BaE"/>
-                            <constraint firstItem="RNQ-zD-4Cl" firstAttribute="trailing" secondItem="4zy-Nw-GGt" secondAttribute="trailing" constant="20" id="iaJ-Ii-p3o"/>
+                            <constraint firstItem="RNQ-zD-4Cl" firstAttribute="trailing" secondItem="eb3-zC-9Ie" secondAttribute="trailing" id="bCP-TS-BaE"/>
+                            <constraint firstItem="4zy-Nw-GGt" firstAttribute="trailing" secondItem="RNQ-zD-4Cl" secondAttribute="trailing" id="f03-Hn-mcN"/>
+                            <constraint firstItem="4zy-Nw-GGt" firstAttribute="bottom" secondItem="RNQ-zD-4Cl" secondAttribute="bottom" id="l0s-y5-mKI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="合計" image="calendar" catalog="system" id="cYw-CG-QGg"/>

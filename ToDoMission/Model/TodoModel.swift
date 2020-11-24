@@ -48,7 +48,8 @@ class TodoCommon {
         debugLog("\(todayStr)")
     }
     
-    //Realmファイルの存在チェック
+    /// 当日のRealmファイルが存在するかを判定
+    /// - Returns: true(ファイルあり)/false(ファイルなし)
     func isCheckRealm() ->Bool {
         debugLog("start.")
         
@@ -64,6 +65,26 @@ class TodoCommon {
             }
         } catch  {
             debugLog("Realm file check error.")
+            return false
+        }
+    }
+    
+    /// 指定した日付のRealmファイルが存在するかを判定
+    /// - Parameter dateStr: 日付 (ex)"20201231"
+    /// - Returns: true(ファイルあり)/false(ファイルなし)
+    func isCheckDateRealm(dateStr:String) ->Bool {
+        do {
+            let realmCheck = try Realm()
+            let todayRealm = realmCheck.objects(TodoModel.self).filter("date == '\(dateStr)'")
+            if (todayRealm.count > 0) {
+                debugLog("Realm file is exist. \(dateStr)")
+                return true
+            } else {
+                debugLog("Realm file is not exist. \(dateStr)")
+                return false
+            }
+        } catch  {
+            debugLog("Realm file check error. \(dateStr)")
             return false
         }
     }
@@ -152,12 +173,14 @@ class TodoCommon {
                 debugLog("updated : \(String(describing: results?.missionInfoList))")
             }
         } catch {
-            debugLog("add mission error.")
+            debugLog("update mission error.")
         }
         debugLog("success.")
     }
     
-    //取得:Realmファイル
+    
+    /// 当日のRealmファイルを取得する
+    /// - Returns: TodoModel型データ
     func getTodayRealm() ->Any {
         debugLog("start.")
         var results = TodoModel()
@@ -167,7 +190,25 @@ class TodoCommon {
             results = realm.objects(TodoModel.self).filter("date == '\(todayStr)'").first!
             
         } catch {
-            debugLog("add mission error.")
+            debugLog("get Realm error. \(todayStr)")
+        }
+        debugLog("success.")
+        return results
+    }
+    
+    /// 指定した日のRealmファイルを取得する
+    /// - Parameter dateStr: 日付 (ex)"20201231"
+    /// - Returns: TodoModel型データ
+    func getDateRealm(_ dateStr:String) -> Any {
+        debugLog("start.")
+        var results = TodoModel()
+        
+        do {
+            let realm =  try Realm()
+            results = realm.objects(TodoModel.self).filter("date == '\(dateStr)'").first!
+            
+        } catch {
+            debugLog("get Realm error. \(dateStr)")
         }
         debugLog("success.")
         return results
