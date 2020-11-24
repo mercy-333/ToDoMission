@@ -60,7 +60,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         todoCommon.updateDateStr()
         
         // Realmインスタンス生成
-        if (todoCommon.isCheckRealm()) {
+        if (todoCommon.isCheckTodayRealm()) {
             // 現在日付のデータが存在している場合は生成せず既にあるデータをロードする
             let todayRealmData:TodoModel = todoCommon.getTodayRealm() as! TodoModel
             for i in 0..<todayRealmData.missionInfoList.count {

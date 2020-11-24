@@ -50,7 +50,7 @@ class TodoCommon {
     
     /// 当日のRealmファイルが存在するかを判定
     /// - Returns: true(ファイルあり)/false(ファイルなし)
-    func isCheckRealm() ->Bool {
+    func isCheckTodayRealm() ->Bool {
         debugLog("start.")
         
         do {
