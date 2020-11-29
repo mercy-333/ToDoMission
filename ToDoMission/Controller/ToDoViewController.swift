@@ -28,8 +28,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* ミッション内容のリスト */
     var missionList = [String]()
     
-    /* ミッションリストのチェック状況 */
-    /* true:達成 / false:未達成 */
+    /* ミッションリストのチェック状況 true:達成 / false:未達成 */
     var isCheckList = [Bool]()
     
     let todoCommon = TodoCommon()
@@ -127,7 +126,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             // カスタムセルのボタンにrowをタグ値として設定
             cellButton.tag = indexPath.row
         } else {
-            debugLog("nill eror")
+            debugLog("nil error")
         }
         return cell
     }

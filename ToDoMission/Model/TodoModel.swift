@@ -60,7 +60,7 @@ class TodoCommon {
                 debugLog("Realm file is already exist.")
                 return true
             } else {
-                debugLog("Realm file is not exist.")
+                debugLog("Realm file is NOT exist.")
                 return false
             }
         } catch  {
@@ -80,7 +80,7 @@ class TodoCommon {
                 debugLog("Realm file is exist. \(dateStr)")
                 return true
             } else {
-                debugLog("Realm file is not exist. \(dateStr)")
+                debugLog("Realm file is NOT exist. \(dateStr)")
                 return false
             }
         } catch  {
@@ -200,7 +200,7 @@ class TodoCommon {
     /// - Parameter dateStr: 日付 (ex)"20201231"
     /// - Returns: TodoModel型データ
     func getDateRealm(_ dateStr:String) -> Any {
-        debugLog("start.")
+        debugLog("start. \(dateStr)")
         var results = TodoModel()
         
         do {
