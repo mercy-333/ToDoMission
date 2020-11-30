@@ -190,7 +190,9 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
                 countTrue += 1
             }
         }
-        result = Float(countTrue) / Float(isCheckList.count) * 100
+        if (countTrue != 0) {
+            result = Float(countTrue) / Float(isCheckList.count) * 100
+        }
         let result_str = String(format: "%.0f", result)
         archivementRate.text = "\(result_str) %   ( \(countTrue) / \(isCheckList.count) )"
         
