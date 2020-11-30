@@ -25,6 +25,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     /* ミッションリストのチェック状況 true:達成 / false:未達成 */
     var isCheckList = [Bool]()
+
+    // タップした日付
+    var currentDate:String = ""
     
     /// viewDidLoad
     override func viewDidLoad() {
@@ -65,34 +68,34 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     ///   - monthPosition:カレンダーの月(前月:0 当月:1 次月:2)
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let dateStr = Common.stringFromDate(date: date, format: "yyyyMMdd")
-        debugLog("tapped. \(dateStr)")
-         
-        // 現在描画されている分のリストを初期化
-        if (missionList.count > 0) {
-            let listLen = missionList.count
-            tableView.beginUpdates()
-            for i in (0..<listLen).reversed() {
-                tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableView.RowAnimation.right)
-                missionList.remove(at: i)
-                isCheckList.remove(at: i)
-            }
-            tableView.endUpdates()
-        }
-        // タップした日の Realmデータが存在したら、取得する
-        if (todoCommon.isCheckDateRealm(dateStr: dateStr)) {
-            let realmData:TodoModel = todoCommon.getDateRealm(dateStr) as! TodoModel
-            
-            for i in 0..<realmData.missionInfoList.count {
-                missionList.insert(realmData.missionInfoList[i].title, at: self.missionList.endIndex)
-                isCheckList.insert(realmData.missionInfoList[i].isCheck, at: isCheckList.endIndex)
+        debugLog("tapped. \(dateStr) / current:\(currentDate)")
+        
+        // 同じ日付を連続でタップした場合TableViewを更新しない
+        if (currentDate != dateStr) {
+            // 現在描画されている分のリストを初期化
+            initTableView()
+            // タップした日の Realmデータが存在したら、取得する
+            if (todoCommon.isCheckDateRealm(dateStr: dateStr)) {
+                let realmData:TodoModel = todoCommon.getDateRealm(dateStr) as! TodoModel
                 
-                // TableViewにセルを追加
-                tableView.insertRows(at: [IndexPath(row: missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
+                for i in 0..<realmData.missionInfoList.count {
+                    missionList.insert(realmData.missionInfoList[i].title, at: self.missionList.endIndex)
+                    isCheckList.insert(realmData.missionInfoList[i].isCheck, at: isCheckList.endIndex)
+                    
+                    // TableViewにセルを追加
+                    tableView.insertRows(at: [IndexPath(row: missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
+                }
+                debugLog("realm loaded.")
+            } else {
+                /* 何もしない */
             }
-            debugLog("realm loaded.")
         } else {
-            /* 何もしない */
+            debugLog("don't update.")
         }
+        
+        // タップした日付を保持
+        currentDate = dateStr
+
         debugLog("success.")
     }
     
@@ -104,21 +107,25 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     ///   - section:
     /// - Returns: セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        debugLog("start. \(missionList.count)")
+        //debugLog("start. \(missionList.count)")
         return missionList.count
     }
     
-    /// TableViewのセル生成時に呼ばれる
+    /// cellForRowAt() TableViewのセル生成時に呼ばれる
     /// Realmデータから取得したデータ数をセル内容に設定
     /// - Parameters:
     ///   - tableView:
     ///   - indexPath:
     /// - Returns:
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        debugLog("start.")
+        debugLog("start. indexPath.row:\(indexPath.row)")
         
+        for i in 0..<isCheckList.count {
+            debugLog("isCheckList[\(i)]:\(String(isCheckList[i]))")
+        }
         // セルの取得(再利用)
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
+        
         
         // ミッション内容をカスタムセルの Label(tag2)に設定
         let cellLabel = cell.viewWithTag(2) as! UILabel
@@ -146,11 +153,27 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         return cell
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    
+    /// TableView,missionList,isCheckListを初期化する
+    func initTableView() {
+        if (missionList.count > 0) {
+            let listLen = missionList.count
+            tableView.beginUpdates()
+            for i in (0..<listLen).reversed() {
+                tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableView.RowAnimation.right)
+                missionList.remove(at: i)
+                isCheckList.remove(at: i)
+            }
+            tableView.endUpdates()
+        }
+    }
     
     /// デバッグログ
     /// - Parameters:
