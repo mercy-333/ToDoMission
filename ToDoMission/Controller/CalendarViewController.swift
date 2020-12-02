@@ -17,6 +17,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
 
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var rewardLabel: UILabel!
+    @IBOutlet weak var completeResults: UIImageView!
     
     let todoCommon = TodoCommon()
     
@@ -41,6 +43,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         self.calendar.dataSource = self
         self.calendar.delegate = self
         calendarSetting()
+        uiInit()
         
         debugLog("success.")
     }
@@ -85,6 +88,18 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
                     // TableViewにセルを追加
                     tableView.insertRows(at: [IndexPath(row: missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
                 }
+                
+                // 達成結果
+                if realmData.completeFlg {
+                    completeResults.image = UIImage(systemName: "star.fill")
+                } else {
+                    completeResults.image = UIImage(systemName: "star.leadinghalf.fill")
+                }
+                completeResults.tintColor = UIColor.yellow
+
+                // ごほうび
+                rewardLabel.text = realmData.gohoubi
+                
                 debugLog("realm loaded.")
             } else {
                 /* 何もしない */
@@ -211,5 +226,13 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendar.calendarWeekdayView.weekdayLabels[4].textColor = UIColor.black
         calendar.calendarWeekdayView.weekdayLabels[5].textColor = UIColor.black
         calendar.calendarWeekdayView.weekdayLabels[6].textColor = UIColor.blue
+    }
+    
+    func uiInit() {
+        rewardLabel.layer.cornerRadius = 10
+        rewardLabel.clipsToBounds = true
+        
+        completeResults.layer.cornerRadius = 10
+        completeResults.clipsToBounds = true
     }
 }
