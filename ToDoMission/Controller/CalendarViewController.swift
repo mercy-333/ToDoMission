@@ -31,7 +31,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     // タップした日付
     var currentDate:String = ""
     
-    /// viewDidLoad
+    /*----------------------*/
+    /* ViewDidLoad          */
+    /*----------------------*/
     override func viewDidLoad() {
         super.viewDidLoad()
         debugLog("#############################")
@@ -44,10 +46,9 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         self.calendar.delegate = self
         calendarSetting()
         uiInit()
-        
+        realmLoad(todoCommon.todayStr)
         debugLog("success.")
     }
-    
     
     /// カレンダーにドットをつける
     /// - Parameters:
@@ -75,45 +76,17 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         // 同じ日付を連続でタップした場合TableViewを更新しない
         if (currentDate != dateStr) {
-            // 現在描画されている分のリストを初期化
             initTableView()
-            // タップした日の Realmデータが存在したら、取得する
-            if (todoCommon.isCheckDateRealm(dateStr: dateStr)) {
-                let realmData:TodoModel = todoCommon.getDateRealm(dateStr) as! TodoModel
-                
-                for i in 0..<realmData.missionInfoList.count {
-                    missionList.insert(realmData.missionInfoList[i].title, at: self.missionList.endIndex)
-                    isCheckList.insert(realmData.missionInfoList[i].isCheck, at: isCheckList.endIndex)
-                    
-                    // TableViewにセルを追加
-                    tableView.insertRows(at: [IndexPath(row: missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
-                }
-                
-                // 達成結果
-                if realmData.completeFlg {
-                    completeResults.image = UIImage(systemName: "star.fill")
-                } else {
-                    completeResults.image = UIImage(systemName: "star.leadinghalf.fill")
-                }
-                completeResults.tintColor = UIColor.yellow
-
-                // ごほうび
-                rewardLabel.text = realmData.gohoubi
-                
-                debugLog("realm loaded.")
-            } else {
-                /* 何もしない */
-            }
+            realmLoad(dateStr)
         } else {
             debugLog("don't update.")
         }
         
-        // タップした日付を保持
+        // タップした日付を保持(連続で押しても更新させない)
         currentDate = dateStr
 
         debugLog("success.")
     }
-    
     
     /// TableViewのセル数を設定
     /// Realmデータから取得したデータ数をセル数に設定
@@ -168,11 +141,38 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         return cell
     }
     
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    /// タップした日の Realmデータが存在したら、取得する
+    /// missionList,isCheckList,達成結果,ごほうびlabelに反映
+    /// - Parameter dateStr: 取得するRealmデータの日付
+    func realmLoad(_ dateStr:String) {
+        debugLog("start.")
+        // タップした日の Realmデータが存在したら、取得する
+        if (todoCommon.isCheckDateRealm(dateStr: dateStr)) {
+            let realmData:TodoModel = todoCommon.getDateRealm(dateStr) as! TodoModel
+            
+            for i in 0..<realmData.missionInfoList.count {
+                missionList.insert(realmData.missionInfoList[i].title, at: self.missionList.endIndex)
+                isCheckList.insert(realmData.missionInfoList[i].isCheck, at: isCheckList.endIndex)
+                
+                // TableViewにセルを追加
+                tableView.insertRows(at: [IndexPath(row: missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
+            }
+            
+            // 達成結果
+            if realmData.completeFlg {
+                completeResults.image = UIImage(systemName: "star.fill")
+            } else {
+                completeResults.image = UIImage(systemName: "star.leadinghalf.fill")
+            }
+            completeResults.tintColor = UIColor.yellow
+
+            // ごほうび
+            rewardLabel.text = realmData.gohoubi
+            
+            debugLog("realm loaded.")
+        } else {
+            /* 何もしない */
+        }
     }
     
     /// TableView,missionList,isCheckListを初期化する
@@ -234,5 +234,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         
         completeResults.layer.cornerRadius = 10
         completeResults.clipsToBounds = true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }

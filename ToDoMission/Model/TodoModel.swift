@@ -30,6 +30,11 @@ class TodoCommon {
     
     var todayStr = ""
     
+    init(){
+        debugLog("initialized.")
+        updateDateStr()
+    }
+    
     //デバッグログ
     func debugLog(_ message: String = "", function: String = #function, file: String = #file, line: Int = #line) {
         #if DEBUG

@@ -36,9 +36,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     //Realmデータがあった場合、何個データがあるかを保持
     var realmCount = 0
 
-    /*----------------------*/
-    /* ViewDidLoad          */
-    /*----------------------*/
+
     override func viewDidLoad() {
         super.viewDidLoad()
         debugLog("#############################")
@@ -55,8 +53,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         debugLog("bannerView loaded.")
-        
-        todoCommon.updateDateStr()
         
         // Realmインスタンス生成
         if (todoCommon.isCheckTodayRealm()) {
