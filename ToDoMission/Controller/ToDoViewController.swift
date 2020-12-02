@@ -105,12 +105,12 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             //新規追加(Realmに存在しない)のみ リストを更新
             //Realmデータある時は直接リスト更新するのでスキップ
-            if (indexPath.row < realmCount) {
+            /*if (indexPath.row < realmCount) {
                 /* 何もしない */
             } else {
                 isCheckList.insert(false, at: isCheckList.endIndex)
                 debugLog("new list added.")
-            }
+            }*/
 
             // true/falseで画像切り替え
             if (isCheckList[indexPath.row] == true) {
@@ -145,6 +145,7 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let textField = alertController.textFields?.first {
                 // ミッションリスト配列に追加
                 self.missionList.insert(textField.text!, at: self.missionList.endIndex)
+                self.isCheckList.insert(false, at: isCheckList.endIndex)
                 // ミッションテーブルの先頭に行を追加
                 self.missionTable.insertRows(at: [IndexPath(row: self.missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
                 
@@ -204,6 +205,28 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    /// スワイプ時にテーブル削除
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - editingStyle: <#editingStyle description#>
+    ///   - indexPath: <#indexPath description#>
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        debugLog("start. swipe [\(indexPath.row)]")
+        // 先にデータを削除しないと、エラーが発生
+        todoCommon.deleteMissionList(missionTitle: missionList[indexPath.row])
+        removeList(row: indexPath.row)
+        
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        updateArchivementRate()
+    }
+    
+    func removeList(row:Int) {
+        debugLog("start. remove[\(row)]")
+        missionList.remove(at: row)
+        isCheckList.remove(at: row)
+        //ここでoutOfIndexになる isCheckListの個数更新同期がうまく行ってない
+    }
+    
     func gohoubi(){
         performSegue(withIdentifier: "PopUpSegue", sender: nil)
     }
@@ -231,7 +254,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     func debugLog(_ message: String = "", function: String = #function, file: String = #file, line: Int = #line) {
         #if DEBUG
             let fileName = URL(string: file)!.lastPathComponent
-            //NSLog("\(fileName) #\(line) \(function): \(message)")
             print("# \(fileName) #\(line) \(function): \(message)")
         #endif
     }

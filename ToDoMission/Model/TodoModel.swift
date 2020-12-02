@@ -34,7 +34,6 @@ class TodoCommon {
     func debugLog(_ message: String = "", function: String = #function, file: String = #file, line: Int = #line) {
         #if DEBUG
             let fileName = URL(string: file)!.lastPathComponent
-            //NSLog("\(fileName) #\(line) \(function): \(message)")
             print("# \(fileName) #\(line) \(function): \(message)")
         #endif
     }
@@ -153,6 +152,23 @@ class TodoCommon {
         debugLog("success.")
     }
     
+    func deleteMissionList(missionTitle:String) {
+        debugLog("start. [\(missionTitle)]")
+        do {
+            let realm =  try Realm()
+            let today = realm.objects(TodoModel.self).filter("date == '\(todayStr)'").first
+            let results = today?.missionInfoList.filter("title == '\(missionTitle)'")
+            
+            try! realm.write {
+                debugLog("deleted : \(String(describing: results))")
+                realm.delete(results!)
+            }
+        } catch {
+            debugLog("delete mission error.")
+        }
+        debugLog("success.")
+    }
+    
     //更新:ミッションリスト
     func updateMission(missionTitle:String, missionIsCheck:Bool) {
         debugLog("start.")
@@ -161,9 +177,6 @@ class TodoCommon {
             let results = realm.objects(TodoModel.self).filter("date == '\(todayStr)'").first
             
             try! realm.write {
-                /*results?.missionInfoList = tmpInfoList
-                debugLog("updated :\(tmpInfoList)")
-                */
                 for i in 0..<(results?.missionInfoList.count)! {
                     if (results?.missionInfoList[i].title == missionTitle ) {
                         debugLog("Hit! cnt[\(i)]")
