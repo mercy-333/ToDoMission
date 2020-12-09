@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48540E6A25798672006922F4 /* AdMobInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48540E6925798671006922F4 /* AdMobInfo.plist */; };
 		487731A3255B53A700FD7947 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487731A2255B53A700FD7947 /* CalendarViewController.swift */; };
 		489842242551122400A2EE37 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489842232551122400A2EE37 /* Common.swift */; };
 		48E79E25255D6976004A536D /* gomarice_mukasi_mukasi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48E79E24255D6976004A536D /* gomarice_mukasi_mukasi.ttf */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48540E6925798671006922F4 /* AdMobInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AdMobInfo.plist; sourceTree = "<group>"; };
 		485977549DA2398A8A001B7B /* Pods_ToDoMission.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoMission.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		487731A2255B53A700FD7947 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		489842232551122400A2EE37 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				7654482225202F3300E49483 /* Info.plist */,
+				48540E6925798671006922F4 /* AdMobInfo.plist */,
 				76D48858252D2578002B09F8 /* Fonts */,
 				765448282520D4C200E49483 /* Model */,
 				7654482A2520D4D900E49483 /* View */,
@@ -203,6 +206,7 @@
 			files = (
 				7654482125202F3300E49483 /* LaunchScreen.storyboard in Resources */,
 				7654481E25202F3300E49483 /* Assets.xcassets in Resources */,
+				48540E6A25798672006922F4 /* AdMobInfo.plist in Resources */,
 				7654481C25202F2700E49483 /* Main.storyboard in Resources */,
 				48E79E25255D6976004A536D /* gomarice_mukasi_mukasi.ttf in Resources */,
 			);

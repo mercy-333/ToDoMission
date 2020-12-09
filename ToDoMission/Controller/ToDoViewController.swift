@@ -45,11 +45,10 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         reward.delegate = self
         titleLabel.font = UIFont(name: "Mukasi-Mukasi", size: 30)
-        //self.view.addBackground(imageName:"stripe.png")
         
-        //本番
-        //bannerView.adUnitID = "ca-app-pub-2345881481621230/3925128565"
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        let filePath = Bundle.main.path(forResource: "AdMobInfo", ofType: "plist")
+        let plist = NSDictionary(contentsOfFile: filePath!)
+        bannerView.adUnitID = plist!["adUnitID"] as? String
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         debugLog("bannerView loaded.")
