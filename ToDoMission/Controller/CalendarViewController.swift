@@ -114,7 +114,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         // セルの取得(再利用)
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
         
-        
         // ミッション内容をカスタムセルの Label(tag2)に設定
         let cellLabel = cell.viewWithTag(2) as! UILabel
         cellLabel.text = missionList[indexPath.row]
@@ -129,9 +128,6 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             } else {
                 cellButton.setImage(UIImage(systemName: "circle"), for: .normal)
             }
-                
-            // カスタムセルのボタンにrowをタグ値として設定
-            cellButton.tag = indexPath.row
             
         } else {
             debugLog("nil error")

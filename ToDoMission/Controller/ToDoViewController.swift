@@ -25,10 +25,10 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     let checkMark = UIImage(named: "checkMark")
     let unCheckMark = UIImage(named: "unCheckMark")
     
-    /* ミッション内容のリスト */
+    /* Todo内容のリスト */
     var missionList = [String]()
     
-    /* ミッションリストのチェック状況 true:達成 / false:未達成 */
+    /* Todoリストのチェック状況 true:達成 / false:未達成 */
     var isCheckList = [Bool]()
     
     let todoCommon = TodoCommon()
@@ -98,15 +98,6 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (cell.viewWithTag(1) as? UIButton) != nil {
             let cellButton = cell.viewWithTag(1) as! UIButton
 
-            //新規追加(Realmに存在しない)のみ リストを更新
-            //Realmデータある時は直接リスト更新するのでスキップ
-            /*if (indexPath.row < realmCount) {
-                /* 何もしない */
-            } else {
-                isCheckList.insert(false, at: isCheckList.endIndex)
-                debugLog("new list added.")
-            }*/
-
             // true/falseで画像切り替え
             if (isCheckList[indexPath.row] == true) {
                 cellButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
@@ -115,13 +106,11 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
                 
             // カスタムセルのボタンをタップした時にcallするメソッドを設定
-            // * チェックボタンを切り替える
+            // * チェック/アンチェックを切り替える
             cellButton.addTarget(self, action: #selector(checkButton(_:)), for: .touchUpInside)
 
-            // カスタムセルのボタンにrowをタグ値として設定
-            cellButton.tag = indexPath.row
         } else {
-            debugLog("nil error")
+            debugLog("cell.viewWithTag(1) is nil.")
         }
         return cell
     }
@@ -163,14 +152,19 @@ class ToDoViewController: UIViewController, UITableViewDelegate, UITableViewData
     // カスタムセル内のチェックボックスをタップ
     // チェックボックス画像を切り替える
     @objc func checkButton(_ sender:UIButton) {
-        if (isCheckList[sender.tag]) {
+        let buttonPosition = sender.convert(CGPoint(), to: self.missionTable)
+        let getIndexPath = self.missionTable.indexPathForRow(at:buttonPosition)
+        let cellRowNum = getIndexPath!.row
+        debugLog("checkButton[\(cellRowNum)]")
+        
+        if (isCheckList[cellRowNum]) {
             sender.setImage(UIImage(systemName: "circle"), for: .normal)
-            (isCheckList[sender.tag]) = false
-            todoCommon.updateMission(missionTitle:missionList[sender.tag], missionIsCheck:false)
+            (isCheckList[cellRowNum]) = false
+            todoCommon.updateMission(missionTitle:missionList[cellRowNum], missionIsCheck:false)
         } else {
             sender.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
-            (isCheckList[sender.tag]) = true
-            todoCommon.updateMission(missionTitle:missionList[sender.tag], missionIsCheck:true)
+            (isCheckList[cellRowNum]) = true
+            todoCommon.updateMission(missionTitle:missionList[cellRowNum], missionIsCheck:true)
         }
         updateArchivementRate()
 
