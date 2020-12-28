@@ -46,7 +46,19 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         self.calendar.delegate = self
         calendarSetting()
         uiInit()
-        realmLoad(todoCommon.todayStr)
+        currentDate = todoCommon.todayStr
+        realmLoad(currentDate)
+        debugLog("success.")
+    }
+    
+    
+    /// 本画面に遷移した時に毎回呼ばれる
+    /// *TableViewを再読み込みする
+    /// - Parameter animated: <#animated description#>
+    override func viewWillAppear(_ animated: Bool) {
+        debugLog("start.")
+        initTableView()
+        realmLoad(currentDate)
         debugLog("success.")
     }
     
@@ -141,7 +153,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     /// missionList,isCheckList,達成結果,ごほうびlabelに反映
     /// - Parameter dateStr: 取得するRealmデータの日付
     func realmLoad(_ dateStr:String) {
-        debugLog("start.")
+        debugLog("start. [\(dateStr)]")
         // タップした日の Realmデータが存在したら、取得する
         if (todoCommon.isCheckDateRealm(dateStr: dateStr)) {
             let realmData:TodoModel = todoCommon.getDateRealm(dateStr) as! TodoModel
@@ -151,7 +163,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
                 isCheckList.insert(realmData.missionInfoList[i].isCheck, at: isCheckList.endIndex)
                 
                 // TableViewにセルを追加
-                tableView.insertRows(at: [IndexPath(row: missionList.count-1, section: 0)], with: UITableView.RowAnimation.right)
+                tableView.insertRows(at: [IndexPath(row: missionList.count-1, section: 0)], with: UITableView.RowAnimation.automatic)
             }
             
             // 達成結果
@@ -177,7 +189,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
             let listLen = missionList.count
             tableView.beginUpdates()
             for i in (0..<listLen).reversed() {
-                tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableView.RowAnimation.right)
+                tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: UITableView.RowAnimation.automatic)
                 missionList.remove(at: i)
                 isCheckList.remove(at: i)
             }
