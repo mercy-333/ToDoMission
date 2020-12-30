@@ -59,6 +59,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         debugLog("start.")
         initTableView()
         realmLoad(currentDate)
+        calendar.reloadData()
         debugLog("success.")
     }
     
@@ -69,7 +70,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     /// - Returns: ドットの数
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let dateStr = Common.stringFromDate(date: date, format: "yyyyMMdd")
-        if (todoCommon.isCheckDateRealm(dateStr: dateStr)) {
+        if (todoCommon.isCheckGohoubiRealm(dateStr: dateStr) ||
+            todoCommon.isCheckInfolistRealm(dateStr: dateStr)) {
             return 1
         } else {
             return 0

@@ -93,6 +93,56 @@ class TodoCommon {
         }
     }
     
+    /// 指定した日付のRealmファイルに "ごほうび" が存在するかを判定
+    /// - Parameter dateStr: 日付 (ex)"20201231"
+    /// - Returns: true(ごほうびあり)/false(ごほうびなし)
+    func isCheckGohoubiRealm(dateStr:String) ->Bool {
+        // ごほうび データを取得
+        var gohoubi = ""
+        do {
+            let realm =  try Realm()
+            let results = realm.objects(TodoModel.self).filter("date == '\(dateStr)'").first
+            guard let value = results?.gohoubi else { return false }
+            gohoubi = value
+        } catch {
+            debugLog("get Realm error. \(dateStr)")
+        }
+    
+        // ごほうびを判定
+        if (gohoubi == "") {
+            debugLog("Gohoubi is NOT exist. [\(dateStr)]")
+            return false
+        } else {
+            debugLog("Gohoubi is exist. [\(dateStr)]")
+            return true
+        }
+    }
+    
+    /// 指定した日付のRealmファイルに "ごほうび" が存在するかを判定
+    /// - Parameter dateStr: 日付 (ex)"20201231"
+    /// - Returns: true(ごほうびあり)/false(ごほうびなし)
+    func isCheckInfolistRealm(dateStr:String) ->Bool {
+        // ごほうび データを取得
+        var count = 0
+        do {
+            let realm =  try Realm()
+            let results = realm.objects(TodoModel.self).filter("date == '\(dateStr)'").first
+            guard let value = results?.missionInfoList.count else { return false }
+            count = value
+        } catch {
+            debugLog("get Realm error. \(dateStr)")
+        }
+    
+        // ごほうびを判定
+        if (count == 0) {
+            debugLog("Infolist is NOT exist. [\(dateStr)]")
+            return false
+        } else {
+            debugLog("Infolist is exist. [\(dateStr)]")
+            return true
+        }
+    }
+    
     //Realmファイル生成
     func createRealm() {
         debugLog("start :\(todayStr)")
