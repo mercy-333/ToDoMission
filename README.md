@@ -17,10 +17,10 @@ ToDoアプリです。
 
 
 # Requirements
-pod 'Google-Mobile-Ads-SDK'
-pod 'FSCalendar'
-pod 'CalculateCalendarLogic'
-pod 'RealmSwift'
+- pod 'Google-Mobile-Ads-SDK'
+- pod 'FSCalendar'
+- pod 'CalculateCalendarLogic'
+- pod 'RealmSwift'
 
 # Author
 Masakazu Konno
